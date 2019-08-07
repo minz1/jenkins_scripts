@@ -6,7 +6,7 @@
 # $4 - Build Directory
 # $5 - Target package
 
-cd /var/lib/jenkins/android/"$4"/out/target/product/"$3"
+cd /var/lib/jenkins/android/"$4"/out/target/product/"$3" || exit 0
 
 rm -rf $2/*
 

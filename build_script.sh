@@ -14,17 +14,17 @@ if [ $# -lt 7 ]; then
     exit
 fi
 
-cd /var/lib/jenkins/android/"$1"
+cd /var/lib/jenkins/android/"$1" || exit 0
 
 export USE_CCACHE=1
 
 source build/envsetup.sh
 
 if [ "$7" = true ]; then
-    repo sync --force-sync -j4
+    repo sync --force-sync -j$(nproc --all)
 fi
 
-lunch "$3_$2-$4" -j4
+lunch "$3_$2-$4" -j$(nproc --all)
 
 if [ "$5" = true ]; then
     mka clean

@@ -9,8 +9,9 @@
 # $5 - Make clean?
 # $6 - Target package
 # $7 - Repo sync?
+# $8 - Repo pick topic
 
-if [ $# -lt 7 ]; then
+if [ $# -lt 8 ]; then
     exit
 fi
 
@@ -22,6 +23,10 @@ source build/envsetup.sh
 
 if [ "$7" = true ]; then
     repo sync --force-sync -j$(nproc --all)
+fi
+
+if [ "$8" != "none" ]; then
+    repopick -t "$8"
 fi
 
 lunch "$3_$2-$4" -j$(nproc --all)

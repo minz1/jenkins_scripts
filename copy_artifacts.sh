@@ -20,5 +20,5 @@ elif [ "$5" == "bootimage" ]; then
     cp boot.img "$2/boot-$1.img"
 elif [ "$5" == "recoveryimage" ]; then
     cp recovery.img "$2/recovery-$1.img"
-    cp recovery.tar "$2/recovery-$1.tar"
+    cp recovery.tar "$2/recovery-$1.tar" || exit 0
 fi

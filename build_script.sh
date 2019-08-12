@@ -6,7 +6,7 @@
 # $2 - Device
 # $3 - ROM Prefix
 # $4 - Build flavor
-# $5 - Make clean?
+# $5 - Clean type
 # $6 - Target package
 # $7 - Repo sync?
 # $8 - Repo pick topic
@@ -31,8 +31,10 @@ fi
 
 lunch "$3_$2-$4" -j$(nproc --all)
 
-if [ "$5" = true ]; then
+if [ "$5" == "clean" ]; then
     mka clean
+elif [ "$5" == "installclean" ]; then
+    mka installclean
 fi
 
 if [ "$1" == "twrp" ]; then

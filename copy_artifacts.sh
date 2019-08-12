@@ -16,7 +16,7 @@ if [ "$5" == "bacon" ]; then
             cp -v "$z" "$2/${z%.zip}-$1.zip"
         fi
     done
-elif [ "$5" == "bootimg" ]; then
+elif [ "$5" == "bootimage" ]; then
     cp boot.img "$2/boot-$1.img"
 elif [ "$5" == "recoveryimage" ]; then
     cp recovery.img "$2/recovery-$1.img"

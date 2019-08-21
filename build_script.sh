@@ -10,12 +10,26 @@
 # $6 - Target package
 # $7 - Repo sync?
 # $8 - Repo pick topic
+# $9 - Update local manifest?
+# $10 - Manifest link
 
-if [ $# -lt 8 ]; then
+LOCAL_MANIFEST_DIR=".repo/local_manifests/"
+
+if [ $# -lt 10 ]; then
     exit
 fi
 
 cd /var/lib/jenkins/android/"$1" || exit 0
+
+if [[ "$9" = true ]]; then
+    if [ ! -d "$LOCAL_MANIFEST_DIR" ]; then
+        mkdir "$LOCAL_MANIFEST_DIR"
+    fi
+
+    cd "$LOCAL_MANIFEST_DIR"
+    wget "${10}"
+    cd ../../
+fi
 
 export USE_CCACHE=1
 

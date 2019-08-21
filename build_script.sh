@@ -27,7 +27,7 @@ if [[ "$9" = true ]]; then
     fi
 
     cd "$LOCAL_MANIFEST_DIR"
-    wget "${10}"
+    wget -N "${10}"
     cd ../../
 fi
 

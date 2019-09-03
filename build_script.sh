@@ -43,6 +43,10 @@ if [ "$8" != "none" ]; then
     repopick -t "$8"
 fi
 
+if [ "$3" == "lineage" ]; then
+    repopick 240411
+fi
+
 lunch "$3_$2-$4" -j$(nproc --all)
 
 if [ "$5" == "clean" ]; then
